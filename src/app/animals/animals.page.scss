@@ -1,0 +1,27 @@
+.search {
+      --ion-grid-column-padding: 0px;
+  
+      .col-search {
+          width: 100%;
+          flex-grow: 1;
+      }
+
+      ion-searchbar {
+        padding: 0px 10px;
+        height: 100%;
+        width: 100%;
+        contain: content;
+      }
+
+      .col-filters, .filters {
+          max-width: fit-content;
+      }
+
+}
+
+.animal {
+    ion-card-content {
+       padding-top: 0;
+    }
+}
+

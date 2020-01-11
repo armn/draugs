@@ -1,0 +1,87 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu id="menu" contentId="main-content" class="app-sidemenu">
+      <ion-header>
+        <ion-toolbar>
+          <ion-row class="">
+            <ion-col class="ion-padding">
+              <h1>Draugs <small>v.0.1</small></h1>
+              <p>{{ user?.email }}</p>
+            </ion-col>
+          </ion-row>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-list-header>{{ "APP" | translate }}</ion-list-header>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerLink]="['/app/animals']">
+              <ion-icon slot="start" name="paw"></ion-icon>
+              <ion-label>
+                {{ "ANIMALS" | translate }}
+              </ion-label>
+            </ion-item>
+            <!-- <ion-item [routerLink]="['/app/lost']">
+              <ion-icon slot="start" name="flame"></ion-icon>
+              <ion-label>
+                {{ 'LOST' | translate }}
+              </ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/app/lost']">
+              <ion-icon slot="start" name="heart"></ion-icon>
+              <ion-label>
+                {{ 'LIKED' | translate }}
+              </ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['donate']">
+              <ion-icon slot="start" name="wallet"></ion-icon>
+              <ion-label>
+                {{ 'DONATE' | translate }}
+              </ion-label>
+            </ion-item> -->
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list>
+          <ion-list-header> {{ "USER" | translate }} </ion-list-header>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerLink]="['/login']" *ngIf="!user">
+              <ion-icon slot="start" name="exit"></ion-icon>
+              <ion-label>
+                {{ "LOGIN" | translate }}
+              </ion-label>
+            </ion-item>
+            <ion-item
+              [routerLink]="['/admin']"
+              *ngIf="user && user?.role == 'ADMIN'"
+            >
+              <ion-icon slot="start" name="create"></ion-icon>
+              <ion-label>
+                {{ "ADMIN" | translate }}
+              </ion-label>
+            </ion-item>
+            <ion-item (click)="logout()" *ngIf="user">
+              <ion-icon slot="start" name="exit"></ion-icon>
+              <ion-label>
+                {{ "LOGOUT" | translate }}
+              </ion-label>
+            </ion-item>
+            <!-- <ion-item (click)="checkForUpdate()">
+              <ion-icon slot="start" name="apps"></ion-icon>
+              <ion-label>
+               Check for Update
+              </ion-label>
+            </ion-item>
+            <ion-item (click)="requestPushNotificationsPermission()">
+              <ion-icon slot="start" name="notifications"></ion-icon>
+              <ion-label>
+               Enable Push Notifications
+              </ion-label>
+            </ion-item> -->
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

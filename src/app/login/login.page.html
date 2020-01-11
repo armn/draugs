@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app" [text]="'BACK' | translate"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <div>{{ 'AUTHORIZATION' | translate }}</div>
+
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="flip-container" #flipcontainer>
+  <div class="flipper">
+    <div class="front">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ 'LOGIN' | translate}}</ion-card-title>
+          </ion-card-header>
+            <ion-card-content>
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
+        
+                <ion-item>
+                  <ion-label position="stacked">{{'EMAIL' | translate}}</ion-label>
+                  <ion-input type="email" formControlName="email"></ion-input>
+                </ion-item>
+        
+                <ion-item>
+                  <ion-label position="stacked">{{'PASSWORD' | translate}}</ion-label>
+                  <ion-input type="password" formControlName="password"></ion-input>
+                </ion-item>
+
+                <ion-button expand="block" type="submit" color="primary" [disabled]="!loginForm.valid"
+                class="ion-padding-horizontal ion-margin-vertical">
+              {{ 'LOGIN'  | translate }}
+              </ion-button>
+   
+                <ion-button expand="block" type="button" color="secondary" fill="outline"
+                class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
+              {{ 'REGISTER' | translate }}
+              </ion-button>
+              </form>
+            </ion-card-content>
+          </ion-card>
+    </div>
+
+    <div class="back">
+        <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{ 'REGISTRATION' | translate}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <form [formGroup]="registerForm" (ngSubmit)="register()">
+                
+                <ion-item>
+                  <ion-label position="stacked">{{ 'NAME' | translate}}</ion-label>
+                  <ion-input formControlName="name"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="stacked">{{ 'EMAIL' | translate }}</ion-label>
+                  <ion-input type="email" formControlName="email"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="stacked">{{ 'PASSWORD' | translate}}</ion-label>
+                  <ion-input type="password" formControlName="password"></ion-input>
+                </ion-item>
+                
+                <ion-button expand="block" type="submit" class="ion-padding-horizontal ion-margin-vertical"
+                [disabled]="!registerForm.valid">
+                  {{ 'REGISTER' | translate}}
+                </ion-button>
+
+                <ion-button expand="block" type="button" color="secondary" fill="clear"
+                class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
+                <ion-icon name="arrow-back" slot="start"></ion-icon>
+              {{'BACK_TO_LOGIN' | translate}}
+              </ion-button>
+
+              </form>
+            </ion-card-content>
+          </ion-card>
+    </div>
+  </div>
+</div>
+</ion-content>

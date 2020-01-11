@@ -1,0 +1,7 @@
+{
+  "name": "draugs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

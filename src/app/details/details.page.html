@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/app"
+        [text]="'BACK' | translate"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{animal?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="animal">
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="animal?.image" [alt]="animal?.name"></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h1>{{animal?.name}}</h1>
+        <p>{{animal?.description}}</p>
+
+      </ion-col>
+
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label>{{ 'SEX' | translate}}</ion-label>
+            <ion-note slot="end" color="primary"
+              >{{animal?.sex | translate}}</ion-note
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label>{{'AGE'|translate}}</ion-label>
+            <ion-note slot="end" color="primary">{{animal?.born}}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label>{{ 'BREED' | translate }}</ion-label>
+            <ion-note slot="end" color="primary">{{animal?.breed}}</ion-note>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label>{{ 'TAG' | translate}}</ion-label>
+            <ion-note slot="end" color="primary">{{animal?.tag}}</ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      
+
+    </ion-row>
+    <ion-button color="primary" expand="block" fill="solid" (click)="displayShelter(animal?.shelter)">{{ 'CONTACT_SHELTER' | translate}}</ion-button>
+
+  </div>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="start" name="close"></ion-icon>{{ 'CLOSE' | translate}}
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{shelter?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="shelter">
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="shelter?.logo" [alt]="animal?.name"></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h1>{{shelter?.name}}</h1>
+        <h2><a href="tel:{{shelter?.phone}}">{{shelter?.phone}}</a></h2>
+        <h3><a href="mailto:{{shelter?.email}}">{{shelter?.email}}</a></h3>
+
+        <h4>{{shelter?.location}}</h4>
+
+        <p>{{shelter?.about}}</p>
+
+      </ion-col>
+
+
+    </ion-row>
+
+  
+  </div>
+</ion-content>

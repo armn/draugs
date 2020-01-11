@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+        <ion-title>{{user?.name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app"           [text]="'BACK' | translate"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list lines="none" inset="false">
+
+    <ion-item-sliding *ngFor="let animal of animals">
+      <div *ngIf="animal?.active">
+      <ion-item-options side="start">
+        <ion-item-option color="success" (click)="adopt(animal?.id)"><ion-icon name="checkmark"></ion-icon>{{'ADOPTED' | translate }}</ion-item-option>
+        <ion-item-option color="danger" (click)="delete(animal?.id)"><ion-icon  name="trash"></ion-icon>{{'DELETE' | translate}}</ion-item-option>
+      </ion-item-options>
+    <ion-item class="animal" (click)="editAnimal(animal)">
+      <ion-avatar slot="start">
+        <ion-img [src]="animal?.image"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{animal?.name}}</h2>
+        <p class="pre-wrap">{{animal?.description | shorten: 150: '...'}}</p>
+      </ion-label>
+      </ion-item>
+    </div>
+
+    
+
+      </ion-item-sliding>
+
+
+
+    </ion-list>
+
+
+</ion-content>
+<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button (click)="addAnimal()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>

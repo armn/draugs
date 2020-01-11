@@ -1,0 +1,106 @@
+<form
+  class="edit-animal ion-page"
+  [formGroup]="editAnimalForm"
+  (ngSubmit)="editAnimal()"
+  novalidate
+>
+  <ion-header >
+    <ion-toolbar color="tertiary">
+      <ion-title>{{ 'UPDATE' | translate}}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()">
+          <ion-icon slot="start" name="close"></ion-icon>{{ 'CLOSE' | translate}}
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-img [src]="image"></ion-img>
+    
+    <ion-list lines="inset">
+     
+      <ion-radio-group formControlName="type">
+        <ion-list-header>
+          {{ 'TYPE' | translate}} *
+        </ion-list-header>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'CAT' | translate}}</ion-label>
+              <ion-radio slot="start" value="CAT"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'DOG' | translate}}</ion-label>
+              <ion-radio slot="start" value="DOG"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+
+      <ion-radio-group formControlName="sex">
+        <ion-list-header>
+          {{ 'SEX' | translate}} *
+        </ion-list-header>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'MALE' | translate}}</ion-label>
+              <ion-radio slot="start" value="MALE"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'FEMALE' | translate}}</ion-label>
+              <ion-radio slot="start" value="FEMALE"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+      <ion-item>
+        <ion-label position="floating">{{ 'NAME' | translate}} *</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">{{ 'DESCRIPTION' | translate}} *</ion-label>
+        <ion-textarea
+          autogrow="true"
+          spellcheck="true"
+          rows="5"
+          formControlName="description"
+        ></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">{{ 'BREED' | translate}}</ion-label>
+        <ion-input type="text" formControlName="breed"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">{{ 'BORN' | translate}}</ion-label>
+        <ion-input type="number" formControlName="born"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">{{ 'TAG' | translate}}</ion-label>
+        <ion-input type="text" formControlName="tag"></ion-input>
+      </ion-item>
+
+     
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <ion-row class="form-actions-wrapper">
+      <ion-col>
+        <ion-button
+          expand="block"
+          color="primary"
+          type="submit"
+          fill="solid"
+          [disabled]="(editAnimalForm.valid) ? false : true"
+          >{{ 'UPDATE' | translate}}</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+</form>
