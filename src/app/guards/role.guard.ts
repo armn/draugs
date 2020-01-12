@@ -17,7 +17,6 @@ export class RoleGuard implements CanActivate {
     return this.firebaseService.user.pipe(
       take(1),
       map(user => {
-        console.log('user in here: ', user);
         if (!user) {
           return false;
         } else {

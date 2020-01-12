@@ -12,16 +12,24 @@ import { ModalController } from '@ionic/angular';
 export class DetailsPage implements OnInit {
   id = null;
   animal: any;
-
+  loader: string;
+  loading: Boolean;
 
   constructor(private route: ActivatedRoute, private firebaseService: FirebaseService, private modalController: ModalController) { }
 
   ngOnInit() {
+
+    this.loader = './assets/images/draugs.png';
+    this.loading = true;
     this.id = this.route.snapshot.paramMap.get('id');
     this.firebaseService.getAnimal(this.id).subscribe(res => {
+      this.loading = false;
       this.animal = res;
       if (res["born"]) {
         this.animal.born = new Date().getFullYear() - res["born"];
+        if (this.animal.born == 0) {
+          this.animal.born = "<1"
+        }
       }
     });
 

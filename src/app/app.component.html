@@ -4,9 +4,9 @@
       <ion-header>
         <ion-toolbar>
           <ion-row class="">
-            <ion-col class="ion-padding">
-              <h1>Draugs <small>v.0.1</small></h1>
-              <p>{{ user?.email }}</p>
+            <ion-col class="ion-padding text-center">
+              <ion-img src='./assets/images/draugs.png' alt="Draugs app"></ion-img>
+              <p *ngIf="user">{{ user?.email }}</p>
             </ion-col>
           </ion-row>
         </ion-toolbar>

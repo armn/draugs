@@ -49,12 +49,13 @@
         <ion-card>
             <ion-card-header>
               <ion-card-title>{{ 'REGISTRATION' | translate}}</ion-card-title>
+              <p>{{'REGISTRATION_DESCRIPTION' | translate}}</p>
             </ion-card-header>
             <ion-card-content>
               <form [formGroup]="registerForm" (ngSubmit)="register()">
                 
                 <ion-item>
-                  <ion-label position="stacked">{{ 'NAME' | translate}}</ion-label>
+                  <ion-label position="stacked">{{ 'NAME_OR_TITLE' | translate}}</ion-label>
                   <ion-input formControlName="name"></ion-input>
                 </ion-item>
 
@@ -67,7 +68,34 @@
                   <ion-label position="stacked">{{ 'PASSWORD' | translate}}</ion-label>
                   <ion-input type="password" formControlName="password"></ion-input>
                 </ion-item>
+
+                <ion-item>
+                  <ion-label position="stacked">{{ 'ABOUT_ORGANIZATION' | translate}}</ion-label>
+                  <ion-textarea formControlName="about"></ion-textarea>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="stacked">{{ 'LOCATION' | translate}}</ion-label>
+                  <ion-input type="text" formControlName="location"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="stacked">{{ 'PHONE' | translate}}</ion-label>
+                  <ion-input type="text" formControlName="phone"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="stacked">{{ 'WEB' | translate}}</ion-label>
+                  <ion-input type="text" formControlName="web"></ion-input>
+                </ion-item>
                 
+                <!-- <ion-item>
+                  <ion-label position="stacked">{{ 'BANK_ACCOUNT' | translate}}</ion-label>
+                  <ion-input type="text" formControlName="bank"></ion-input>
+                </ion-item> -->
+                
+
+
                 <ion-button expand="block" type="submit" class="ion-padding-horizontal ion-margin-vertical"
                 [disabled]="!registerForm.valid">
                   {{ 'REGISTER' | translate}}

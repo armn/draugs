@@ -14,14 +14,14 @@
   <div class="animal">
     <ion-row>
       <ion-col>
-        <ion-img [src]="animal?.image" [alt]="animal?.name"></ion-img>
+        <img src="{{loading ? loader : animal?.image}}" [alt]="animal?.name">
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
         <h1>{{animal?.name}}</h1>
-        <p>{{animal?.description}}</p>
+        <p class="pre-wrap">{{animal?.description}}</p>
 
       </ion-col>
 

@@ -19,6 +19,10 @@ export class EditPage implements OnInit {
   constructor(private modalController: ModalController, private imageService: ImageService, private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+    if (!window.history.state.modal) {
+      const modalState = { modal: true };
+      history.pushState(modalState, null);
+    }
     this.editAnimalForm = new FormGroup({
       type: new FormControl(this.animal.type, [Validators.required]),
       sex: new FormControl(this.animal.sex, [Validators.required]),

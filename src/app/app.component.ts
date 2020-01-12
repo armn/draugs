@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
 import { Platform } from '@ionic/angular';
@@ -7,7 +7,9 @@ import { Platform } from '@ionic/angular';
 import { Plugins } from "@capacitor/core";
 import { FirebaseService } from './services/firebase.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
+import { OverlaysService } from "./services/overlays.service";
+
 const { SplashScreen } = Plugins;
 @Component({
   selector: 'app-root',
@@ -16,16 +18,30 @@ const { SplashScreen } = Plugins;
 })
 export class AppComponent {
   user: any;
+  @HostListener("window:popstate")
+  onPopState() {
+    this.overlaysService.trigger();
+  }
+
   constructor(
     translate: TranslateService,
     public firebaseService: FirebaseService,
-    private afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    public overlaysService: OverlaysService
   ) {
     this.initializeApp();
     translate.setDefaultLang('lv');
     translate.use('lv');
-    this.firebaseService.user.subscribe(user => this.user = user)
+    this.firebaseService.user.subscribe(user => this.user = user);
+
+    this.router.events.subscribe((event: any): void => {
+      if (event instanceof NavigationStart) {
+        if (event.navigationTrigger === "popstate") {
+          this.overlaysService.trigger();
+        }
+      }
+    });
+
   }
 
   async initializeApp() {

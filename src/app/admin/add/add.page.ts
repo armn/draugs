@@ -13,11 +13,16 @@ export class AddPage implements OnInit {
   addAnimalForm: FormGroup;
   animal: Animal;
   image: string;
-  placeholder = "./assets/images/draugs.jpg"
+  placeholder = "./assets/images/draugs.png"
 
   constructor(private modalController: ModalController, private imageService: ImageService, private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+
+    if (!window.history.state.modal) {
+      const modalState = { modal: true };
+      history.pushState(modalState, null);
+    }
 
     this.addAnimalForm = new FormGroup({
       type: new FormControl('', [Validators.required]),

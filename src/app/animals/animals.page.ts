@@ -22,12 +22,17 @@ export class AnimalsPage implements OnInit, OnDestroy {
   filters: Boolean;
   cat: Boolean;
   dog: Boolean;
+  loading: Boolean;
+  loader: string;
 
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+    this.loader = './assets/images/draugs.png';
+    this.loading = true;
     this.subscription = this.firebaseService.getAllAnimals().subscribe(res => {
       this.animals = res;
+      this.loading = false;
     });
 
     this.dog = true;

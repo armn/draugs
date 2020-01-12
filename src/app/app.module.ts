@@ -21,6 +21,7 @@ import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeLv from '@angular/common/locales/lv';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+import { ServiceWorkerModule } from '@angular/service-worker';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -46,7 +47,8 @@ registerLocaleData(localeLv, 'lv');
       provide: TranslateLoader,
       useFactory: HttpLoaderFactory,
       deps: [HttpClient]
-  }})
+  }}),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,

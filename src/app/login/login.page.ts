@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
 
   @ViewChild('flipcontainer', { static: false }) flipcontainer: ElementRef;
 
-  constructor(private fb: FormBuilder, private fireBaseService: FirebaseService, private loadingCtrl: LoadingController,
+  constructor(private fireBaseService: FirebaseService, private loadingCtrl: LoadingController,
     private toastCtrl: ToastController, private alertCtrl: AlertController, private router: Router, private translate: TranslateService) { }
 
   ngOnInit() {
@@ -25,11 +25,16 @@ export class LoginPage implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       name: new FormControl('', [Validators.required]),
+      about: new FormControl(''),
+      location: new FormControl(''),
+      phone: new FormControl(''),
+      web: new FormControl(''),
+      bank: new FormControl('')
     });
 
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
   }
 
@@ -49,7 +54,6 @@ export class LoginPage implements OnInit {
 
     this.fireBaseService.signIn(this.loginForm.value).subscribe(user => {
       loading.dismiss();
-      console.log('after login: ', user);
       this.navigateByRole(user['role']);
     },
     async err => {
@@ -86,7 +90,7 @@ export class LoginPage implements OnInit {
       let alert = await this.alertCtrl.create({
         header: this.translate.instant('ERROR'),
         message: err.message,
-        buttons: ['OK']
+        buttons: [this.translate.instant('OK')]
       });
       alert.present();
     });

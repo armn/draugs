@@ -28,13 +28,13 @@
           <ion-col>
             <ion-item>
               <ion-label>{{ 'CAT' | translate}}</ion-label>
-              <ion-radio slot="start" value="CAT"></ion-radio>
+              <ion-radio slot="start" value="cat"></ion-radio>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
               <ion-label>{{ 'DOG' | translate}}</ion-label>
-              <ion-radio slot="start" value="DOG"></ion-radio>
+              <ion-radio slot="start" value="dog"></ion-radio>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -47,14 +47,14 @@
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-label>{{ 'MALE' | translate}}</ion-label>
-              <ion-radio slot="start" value="MALE"></ion-radio>
+              <ion-label>{{ 'male' | translate}}</ion-label>
+              <ion-radio slot="start" value="male"></ion-radio>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-label>{{ 'FEMALE' | translate}}</ion-label>
-              <ion-radio slot="start" value="FEMALE"></ion-radio>
+              <ion-label>{{ 'female' | translate}}</ion-label>
+              <ion-radio slot="start" value="female"></ion-radio>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -92,6 +92,21 @@
   <ion-footer>
     <ion-row class="form-actions-wrapper">
       <ion-col>
+        <ion-button
+          expand="block"
+          color="secondary"
+          fill="solid"
+          (click)="adopted(animal?.id)"
+          >{{ 'ADOPTED' | translate}}</ion-button
+        >
+        <ion-button
+          expand="block"
+          color="danger"
+          fill="solid"
+          (click)="delete(animal?.id)"
+          >{{ 'DELETE' | translate}}</ion-button
+        >
+
         <ion-button
           expand="block"
           color="primary"

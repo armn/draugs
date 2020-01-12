@@ -23,8 +23,8 @@
     "SEX": "Dzimums",
     "TAG": "Čips",
     "SIZE": "Izmērs",
-    "FEMALE": "Meitene",
-    "MALE": "Puika",
+    "female": "Meitene",
+    "male": "Puika",
     "SEARCH": "Meklēt...",
     "CONTACT_SHELTER": "Sazināties ar patversmi",
     "TYPE": "Tips",
@@ -43,7 +43,16 @@
     "LOGOUT": "Izrakstīties",
     "APP": "Aplikācija",
     "USER": "Lietotājs",
-    "NOTHING_FOUND": "Nekas netika atrasts"
+    "NOTHING_FOUND": "Nekas netika atrasts",
+    "NAME_OR_TITLE": "Vārds/nosaukums",
+    "SHELTER_NAME": "Patversmes nosaukums",
+    "REGISTRATION_DESCRIPTION": "Reģistrācija ir paredzēta dzīvnieku patversmēm.",
+    "LOCATION": "Atrašanās vieta",
+    "PHONE": "Telefons",
+    "WEB": "Mājaslapas adrese",
+    "BANK_ACCOUNT": "Bankas konts (ziedojumiem)",
+    "ABOUT_ORGANIZATION": "Organizācijas apraksts / nosacījumi / darba laiks"
+
 
   }
   

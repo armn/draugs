@@ -12,7 +12,7 @@
   </ion-header>
 
   <ion-content>
-    <ion-img [src]="image"></ion-img>
+    <img [src]="image" />
     <ion-list lines="inset">
       <ion-row class="ion-justify-content-center">
       <ion-col>
@@ -49,14 +49,14 @@
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-label>{{ 'MALE' | translate}}</ion-label>
-              <ion-radio slot="start" value="MALE" checked></ion-radio>
+              <ion-label>{{ 'male' | translate}}</ion-label>
+              <ion-radio slot="start" value="male" checked></ion-radio>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-label>{{ 'FEMALE' | translate}}</ion-label>
-              <ion-radio slot="start" value="FEMALE"></ion-radio>
+              <ion-label>{{ 'female' | translate}}</ion-label>
+              <ion-radio slot="start" value="female"></ion-radio>
             </ion-item>
           </ion-col>
         </ion-row>

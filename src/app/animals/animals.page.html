@@ -47,7 +47,7 @@
         <ion-list lines="none" inset="false">
           <ion-item class="animal" *ngFor="let animal of searchResults" [routerLink]="['/app/animals/details/', animal?.id]">
             <ion-avatar slot="start">
-              <ion-img [src]="animal?.image" [alt]="animal?.name"></ion-img>
+              <img [src]="loading ? loader : animal?.image" [alt]="animal?.name">
             </ion-avatar>
             <ion-label>
               <h2>{{animal?.name}}</h2>
@@ -60,10 +60,11 @@
    </ng-template>
 
 
-        <ion-row class="ion-no-padding row-animals">
-        <ion-col size="12" class="animal" *ngFor="let animal of animals">
+   <div class="collection ion-padding">
+
+        <div class="animal collection-item" *ngFor="let animal of animals">
           <ion-card class="" [routerLink]="['/app/animals/details/', animal?.id]" button="true">
-              <ion-img [src]="animal?.image" [alt]="animal?.name"></ion-img>
+              <img [src]="loading ? loader : animal?.image" [alt]="animal?.name">
             <ion-card-header>
               <ion-card-subtitle>{{animal?.date | date}}</ion-card-subtitle>
               <ion-card-title>{{animal?.name}}</ion-card-title>
@@ -72,9 +73,8 @@
               {{animal?.description | shorten: 250: '...'}}
             </ion-card-content>
           </ion-card>
-          </ion-col>
-        </ion-row>
-     
+          </div>
+</div>     
    
     <!-- <h1 style="text-align: center;" *ngIf="noMore">No more results</h1> -->
 

@@ -14,8 +14,11 @@ export class ShelterPage implements OnInit {
   constructor(private route: ActivatedRoute, private firebaseService: FirebaseService, private modalController: ModalController) { }
 
   ngOnInit() {
-    //this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id)
+    if (!window.history.state.modal) {
+      const modalState = { modal: true };
+      history.pushState(modalState, null);
+    }
+    
     this.firebaseService.getShelter(this.id).subscribe(res => {
       this.shelter = res;
     })

@@ -1,6 +1,4 @@
 .search {
-      --ion-grid-column-padding: 0px;
-  
       .col-search {
           width: 100%;
           flex-grow: 1;
@@ -25,3 +23,37 @@
     }
 }
 
+.collection {
+    @media (max-width: 779px) and (min-width: 0px) {
+        column-count: 1;
+    }
+    @media (max-width: 1399px) and (min-width: 780px) {
+        column-count: 2;
+    }
+    @media (min-width: 1400px) {
+        column-count: 3;
+    }
+}
+ 
+.collection-item {
+    display: inline-block;
+    padding: 12px 12px 28px 12px;
+    border-radius: 12px;
+    cursor: zoom-in;
+
+    ion-card {
+        background: white;
+    }
+}
+ 
+.collection-item:hover {
+    animation: tapAnimation 0.5s cubic-bezier(0.31, 1, 0.34, 1) forwards;
+}
+ 
+@keyframes tapAnimation {
+    0% {
+    }
+    100% {
+      background: rgba(128, 128, 128, 0.1);
+    } 
+}

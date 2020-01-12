@@ -42,7 +42,14 @@ export class FirebaseService {
       return this.db.doc(`users/${data.user.uid}`).set({
         name: credentials.name,
         email: credentials.email,
-        created: Date.now()
+        created: Date.now(),
+        identifier: credentials.email.split("@")[0],
+        about: credentials.about,
+        bank: credentials.bank,
+        location: credentials.location,
+        phone: credentials.phone,
+        web: credentials.web,
+        logo: ''
       });
     });
   }
@@ -54,7 +61,7 @@ export class FirebaseService {
   }
 
   getAllAnimals() {
-    return this.db.collection('animals').valueChanges({ idField: 'id' }).pipe(
+    return this.db.collection('animals', ref => ref.where("active", "==", true)).valueChanges({ idField: 'id' }).pipe(
       map(actions => actions.map(animal => {
         return animal;
       }))
@@ -62,7 +69,7 @@ export class FirebaseService {
   }
 
   getAnimalsByType(type) {
-    return this.db.collection('animals', ref => ref.where("type", "==", type)).valueChanges({ idField: 'id' }).pipe(
+    return this.db.collection('animals', ref => ref.where("active", "==", true).where("type", "==", type)).valueChanges({ idField: 'id' }).pipe(
       map(actions => actions.map(animal => {
         return animal;
       }))
@@ -114,7 +121,6 @@ export class FirebaseService {
   }
 
   getShelter(id) {
-    console.log(id)
     return this.db.doc(`users/${id}`).valueChanges();
   }
 
