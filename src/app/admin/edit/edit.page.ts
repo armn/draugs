@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Animal } from "../../interfaces"
 import { ImageService } from "../../services/image.service"
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.page.html',
@@ -11,12 +12,11 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class EditPage implements OnInit {
   id;
-//  animal;
   editAnimalForm: FormGroup;
   animal: any;
   image: string;
   placeholder = "./assets/images/draugs.jpg"
-  constructor(private modalController: ModalController, private imageService: ImageService, private firebaseService: FirebaseService) { }
+  constructor(private modalController: ModalController, private imageService: ImageService, private firebaseService: FirebaseService, private translate: TranslateService, private alertController: AlertController) { }
 
   ngOnInit() {
     if (!window.history.state.modal) {
@@ -44,28 +44,46 @@ export class EditPage implements OnInit {
     } else {
       this.image = this.animal.image;
     }
-   
-}
 
-editAnimal() {
-  this.editAnimalForm.value.image = this.image;
-  this.editAnimalForm.value.date = Date.now();
-  this.firebaseService.updateAnimal(this.animal.id, this.editAnimalForm.value).then(() => {
-    this.closeModal();
-  })
-}
+  }
 
-adopted(id) {
-  this.firebaseService.adoptAnimal(id).then(() => {
-    this.closeModal();
-  })
-}
+  editAnimal() {
+    this.editAnimalForm.value.image = this.image;
+    this.editAnimalForm.value.date = Date.now();
+    this.firebaseService.updateAnimal(this.animal.id, this.editAnimalForm.value).then(() => {
+      this.closeModal();
+    })
+  }
 
-delete(id) {
-  this.firebaseService.deleteAnimal(id).then(() => {
-    this.closeModal();
-  })
-}
+  adopted(id) {
+    this.firebaseService.adoptAnimal(id).then(() => {
+      this.closeModal();
+    })
+  }
+
+  async delete(id) {
+    const alert = await this.alertController.create({
+      header: this.translate.instant('CONFIRM_DELETION'),
+      buttons: [
+        {
+          text: this.translate.instant('CANCEL'),
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: this.translate.instant('DELETE'),
+          cssClass: 'danger',
+          handler: () => {
+            this.firebaseService.deleteAnimal(id);
+            this.closeModal();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
   closeModal() {
     this.modalController.dismiss();

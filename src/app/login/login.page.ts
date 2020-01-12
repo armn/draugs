@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
       location: new FormControl(''),
       phone: new FormControl(''),
       web: new FormControl(''),
-      bank: new FormControl('')
+      //bank: new FormControl('')
     });
 
     this.loginForm = new FormGroup({

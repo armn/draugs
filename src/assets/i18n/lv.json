@@ -51,7 +51,8 @@
     "PHONE": "Telefons",
     "WEB": "Mājaslapas adrese",
     "BANK_ACCOUNT": "Bankas konts (ziedojumiem)",
-    "ABOUT_ORGANIZATION": "Organizācijas apraksts / nosacījumi / darba laiks"
+    "ABOUT_ORGANIZATION": "Organizācijas apraksts / nosacījumi / darba laiks",
+    "ANIMAL_IS_ADOPTED": "Šis draugs jau ir atradis mājas!"
 
 
   }

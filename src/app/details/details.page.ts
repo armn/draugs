@@ -14,7 +14,7 @@ export class DetailsPage implements OnInit {
   animal: any;
   loader: string;
   loading: Boolean;
-
+  subscription: any;
   constructor(private route: ActivatedRoute, private firebaseService: FirebaseService, private modalController: ModalController) { }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class DetailsPage implements OnInit {
     this.loader = './assets/images/draugs.png';
     this.loading = true;
     this.id = this.route.snapshot.paramMap.get('id');
-    this.firebaseService.getAnimal(this.id).subscribe(res => {
+    this.subscription = this.firebaseService.getAnimal(this.id).subscribe(res => {
       this.loading = false;
       this.animal = res;
       if (res["born"]) {
@@ -33,6 +33,10 @@ export class DetailsPage implements OnInit {
       }
     });
 
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 

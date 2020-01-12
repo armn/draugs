@@ -17,16 +17,21 @@ export class AdminPage implements OnInit {
   activeAnimals: Array<any>;
   inactiveAnimals: Array<any>;
   user: any;
+  subscription: any;
   constructor( private modalController: ModalController, private firebaseService: FirebaseService, private alertController: AlertController, private translate: TranslateService) {}
 
   ngOnInit() {
-   this.firebaseService.getMyAnimals().subscribe(res => {
+   this.subscription = this.firebaseService.getMyAnimals().subscribe(res => {
       this.animals = res;
     });
 
     this.firebaseService.user.subscribe(res => {
       this.user = res;
     })
+  }
+
+  ngOnDestory() {
+    this.subscription.unsubsribe();
   }
 
   async addAnimal() {

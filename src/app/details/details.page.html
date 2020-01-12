@@ -1,10 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button
-        defaultHref="/app"
-        [text]="'BACK' | translate"
-      ></ion-back-button>
+      <ion-back-button defaultHref="/app" [text]="'BACK' | translate"></ion-back-button>
     </ion-buttons>
     <ion-title>{{animal?.name}}</ion-title>
   </ion-toolbar>
@@ -21,11 +18,15 @@
     <ion-row>
       <ion-col>
         <h1>{{animal?.name}}</h1>
+        <ion-text color="medium"><h6>{{animal?.date | date}}</h6></ion-text>
         <p class="pre-wrap">{{animal?.description}}</p>
-
       </ion-col>
+    </ion-row>
 
-
+    <ion-row *ngIf="!animal?.active">
+      <ion-col>
+       <ion-text color="success"><h2>{{ 'ANIMAL_IS_ADOPTED' | translate}}</h2></ion-text>
+      </ion-col>
     </ion-row>
 
     <ion-row>
@@ -33,9 +34,7 @@
         <ion-list>
           <ion-item>
             <ion-label>{{ 'SEX' | translate}}</ion-label>
-            <ion-note slot="end" color="primary"
-              >{{animal?.sex | translate}}</ion-note
-            >
+            <ion-note slot="end" color="primary">{{animal?.sex | translate}}</ion-note>
           </ion-item>
           <ion-item>
             <ion-label>{{'AGE'|translate}}</ion-label>
@@ -45,17 +44,19 @@
             <ion-label>{{ 'BREED' | translate }}</ion-label>
             <ion-note slot="end" color="primary">{{animal?.breed}}</ion-note>
           </ion-item>
-        
+
           <ion-item>
             <ion-label>{{ 'TAG' | translate}}</ion-label>
             <ion-note slot="end" color="primary">{{animal?.tag}}</ion-note>
           </ion-item>
         </ion-list>
       </ion-col>
-      
+
 
     </ion-row>
-    <ion-button color="primary" expand="block" fill="solid" (click)="displayShelter(animal?.shelter)">{{ 'CONTACT_SHELTER' | translate}}</ion-button>
+    <ion-button color="primary" expand="block" fill="solid" (click)="displayShelter(animal?.shelter)">
+      {{ 'CONTACT_SHELTER' | translate}}</ion-button>
+
 
   </div>
 </ion-content>

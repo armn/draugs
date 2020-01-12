@@ -45,7 +45,7 @@ export class FirebaseService {
         created: Date.now(),
         identifier: credentials.email.split("@")[0],
         about: credentials.about,
-        bank: credentials.bank,
+        //bank: credentials.bank,
         location: credentials.location,
         phone: credentials.phone,
         web: credentials.web,
