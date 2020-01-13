@@ -3,7 +3,6 @@ import { Animal } from '../interfaces';
 import { FirebaseService } from '../services/firebase.service';
 import { Observable, Subscription } from 'rxjs';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
-
 @Component({
   selector: 'app-animals',
   templateUrl: './animals.page.html',
@@ -11,11 +10,11 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
 })
 export class AnimalsPage implements OnInit, OnDestroy {
 
-  animals: Array<any>;
+  animals: Array<Animal>;
   filterForm: FormGroup;
   searchQuery: string;
   noMore: any;
-  showFilters: any;
+  showFilters: Boolean;
   searchResults: any;
   subscription: Subscription;
   searching: Boolean;
@@ -24,6 +23,7 @@ export class AnimalsPage implements OnInit, OnDestroy {
   dog: Boolean;
   loading: Boolean;
   loader: string;
+  filterBy: Array<any>
 
   constructor(private firebaseService: FirebaseService) { }
 
@@ -37,6 +37,8 @@ export class AnimalsPage implements OnInit, OnDestroy {
 
     this.dog = true;
     this.cat = true;
+
+    this.filterBy = [this.dog, this.cat]
   }
 
   ngOnDestroy() {
@@ -63,24 +65,30 @@ export class AnimalsPage implements OnInit, OnDestroy {
   }
 
   applyFilter() {
-    if (this.dog && this.cat) {
-      this.subscription.add(this.firebaseService.getAllAnimals().subscribe(res => {
-        this.animals = res;
-      }));
-    }
-    else if (this.dog && !this.cat) {
-      this.subscription.add(this.firebaseService.getAnimalsByType("dog").subscribe(res => {
-        this.animals = res;
-      }));
-    }
-    else if (!this.dog && this.cat) {
-      this.subscription.add(this.firebaseService.getAnimalsByType("cat").subscribe(res => {
-        this.animals = res;
-      }));
-    }
-    else {
-      this.animals = null;
-    }
-  }
 
+    this.filterBy = [this.dog, this.cat]
+
+  
+  // Obsolete code, replaced by filter pipe
+  
+  //   if (this.dog && this.cat) {
+  //     this.subscription.add(this.firebaseService.getAllAnimals().subscribe(res => {
+  //       this.animals = res;
+  //     }));
+  //   }
+  //   else if (this.dog && !this.cat) {
+  //     this.subscription.add(this.firebaseService.getAnimalsByType("dog").subscribe(res => {
+  //       this.animals = res;
+  //     }));
+  //   }
+  //   else if (!this.dog && this.cat) {
+  //     this.subscription.add(this.firebaseService.getAnimalsByType("cat").subscribe(res => {
+  //       this.animals = res;
+  //     }));
+  //   }
+  //   else {
+  //     this.animals = null;
+  //   }
+  // }
+  }
 }

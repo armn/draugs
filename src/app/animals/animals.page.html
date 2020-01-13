@@ -45,7 +45,7 @@
       <ion-row class="ion-no-padding row-animals search-results" >
         <ion-col size="12">
         <ion-list lines="none" inset="false">
-          <ion-item class="animal" *ngFor="let animal of searchResults" [routerLink]="['/app/animals/details/', animal?.id]">
+          <ion-item class="animal" *ngFor="let animal of searchResults | filter:filterBy" [routerLink]="['/app/animals/details/', animal?.id]">
             <ion-avatar slot="start">
               <img [src]="loading ? loader : animal?.image" [alt]="animal?.name">
             </ion-avatar>
@@ -62,7 +62,7 @@
 
    <div class="collection ion-padding">
 
-        <div class="animal collection-item" *ngFor="let animal of animals">
+        <div class="animal collection-item" *ngFor="let animal of animals | filter:filterBy">
           <ion-card class="" [routerLink]="['/app/animals/details/', animal?.id]" button="true">
               <img [src]="loading ? loader : animal?.image" [alt]="animal?.name">
             <ion-card-header>

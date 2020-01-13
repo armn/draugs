@@ -10,7 +10,7 @@ import { AnimalsPage } from './animals.page';
 import { RouterModule } from '@angular/router';
 import { TranslateModule} from '@ngx-translate/core';
 import { NgPipesModule } from 'ngx-pipes';
-
+import { PipesModule } from "../pipes/pipes.module"
 @NgModule({
   imports: [
     CommonModule,
@@ -19,6 +19,7 @@ import { NgPipesModule } from 'ngx-pipes';
     TranslateModule,
     ReactiveFormsModule,
     NgPipesModule,
+    PipesModule,
     RouterModule.forChild([{ path: '', component: AnimalsPage }])
   ],
   declarations: [AnimalsPage]

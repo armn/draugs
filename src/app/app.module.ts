@@ -42,7 +42,6 @@ registerLocaleData(localeLv, 'lv');
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthGuardModule,
-    NgPipesModule,
     TranslateModule.forRoot({ loader: {
       provide: TranslateLoader,
       useFactory: HttpLoaderFactory,
