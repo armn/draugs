@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Animal } from '../interfaces';
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
+  pure: true
 })
 export class FilterPipe implements PipeTransform {
 

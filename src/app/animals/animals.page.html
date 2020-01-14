@@ -9,28 +9,41 @@
   <ion-toolbar class="search">
     <ion-row>
       <ion-col class="col-search">
-        <ion-searchbar class="searchbar" [(ngModel)]="searchQuery" (ionChange)="searchAnimals()" [placeholder]="'SEARCH' | translate"></ion-searchbar>
+        <ion-searchbar
+          class="searchbar"
+          [(ngModel)]="searchQuery"
+          (ionChange)="searchAnimals()"
+          [placeholder]="'SEARCH' | translate"
+        ></ion-searchbar>
       </ion-col>
       <ion-col class="col-filters">
         <ion-button fill="clear" (click)="filters = !filters">
-            <ion-icon slot="icon-only" name="options" ></ion-icon>
-          </ion-button>
-          
+          <ion-icon slot="icon-only" name="options"></ion-icon>
+        </ion-button>
       </ion-col>
-      
     </ion-row>
-      <ion-row [hidden]="!filters">
-        <ion-col>
-            <ion-item >
-              <ion-label>{{ 'CAT' | translate}}</ion-label>
-              <ion-checkbox slot="end" [(ngModel)]="cat" checked (ionChange)="applyFilter()"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-label>{{ 'DOG' | translate}}</ion-label>
-              <ion-checkbox slot="end" [(ngModel)]="dog" checked (ionChange)="applyFilter()"></ion-checkbox>
-            </ion-item>
-        </ion-col>
-      </ion-row>
+    <ion-row [hidden]="!filters">
+      <ion-col>
+        <ion-item>
+          <ion-label>{{ 'CAT' | translate}}</ion-label>
+          <ion-checkbox
+            slot="end"
+            [(ngModel)]="cat"
+            checked
+            (ionChange)="applyFilter()"
+          ></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'DOG' | translate}}</ion-label>
+          <ion-checkbox
+            slot="end"
+            [(ngModel)]="dog"
+            checked
+            (ionChange)="applyFilter()"
+          ></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
@@ -38,46 +51,62 @@
   <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher> -->
-  
-  <ng-container>  
-    <h1 *ngIf="animals == null" class="text-center">{{'NOTHING_FOUND' | translate}} </h1>
+
+  <ng-container>
+    <h1 *ngIf="animals == null" class="text-center">
+      {{'NOTHING_FOUND' | translate}}
+    </h1>
     <ng-template [ngIf]="searching">
-      <ion-row class="ion-no-padding row-animals search-results" >
+      <ion-row class="ion-no-padding row-animals search-results">
         <ion-col size="12">
-        <ion-list lines="none" inset="false">
-          <ion-item class="animal" *ngFor="let animal of searchResults | filter:filterBy" [routerLink]="['/app/animals/details/', animal?.id]">
-            <ion-avatar slot="start">
-              <img [src]="loading ? loader : animal?.image" [alt]="animal?.name">
-            </ion-avatar>
-            <ion-label>
-              <h2>{{animal?.name}}</h2>
-              <p class="pre-wrap">{{animal?.description | shorten: 150: '...'}}</p>
-            </ion-label>
+          <ion-list lines="none" inset="false">
+            <ion-item
+              class="animal"
+              *ngFor="let animal of searchResults | filter:filterBy"
+              [routerLink]="['/app/animals/details/', animal?.id]"
+            >
+              <ion-avatar slot="start">
+                <img
+                  [src]="loading ? loader : animal?.image"
+                  [alt]="animal?.name"
+                />
+              </ion-avatar>
+              <ion-label>
+                <h2>{{animal?.name}}</h2>
+                <p class="pre-wrap">
+                  {{animal?.description | shorten: 150: '...'}}
+                </p>
+              </ion-label>
             </ion-item>
           </ion-list>
         </ion-col>
       </ion-row>
-   </ng-template>
+    </ng-template>
+
+    <div class="collection ion-padding" *ngIf="animals">
+      <div
+        class="animal collection-item"
+        *ngFor="let animal of animals | filter:filterBy"
+      >
+        <ion-card
+          class=""
+          [routerLink]="['/app/animals/details/', animal?.id]"
+          button="true"
+        >
+          <ion-img [src]="animal?.image" [alt]="animal.name"></ion-img>
+          <ion-card-header>
+            <ion-card-subtitle>{{animal.date | date}}</ion-card-subtitle>
+            <ion-card-title>{{animal.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{animal.description | shorten: 250: '...'}}
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
 
 
-   <div class="collection ion-padding">
-
-        <div class="animal collection-item" *ngFor="let animal of animals | filter:filterBy">
-          <ion-card class="" [routerLink]="['/app/animals/details/', animal?.id]" button="true">
-              <img [src]="loading ? loader : animal?.image" [alt]="animal?.name">
-            <ion-card-header>
-              <ion-card-subtitle>{{animal?.date | date}}</ion-card-subtitle>
-              <ion-card-title>{{animal?.name}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              {{animal?.description | shorten: 250: '...'}}
-            </ion-card-content>
-          </ion-card>
-          </div>
-</div>     
-   
     <!-- <h1 style="text-align: center;" *ngIf="noMore">No more results</h1> -->
-
   </ng-container>
   <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)" [disabled]="noMore">
     <ion-infinite-scroll-content
