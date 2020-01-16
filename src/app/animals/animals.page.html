@@ -47,12 +47,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="">
+<ion-content class="animals-wrapper">
   <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher> -->
-
-  <ng-container>
     <h1 *ngIf="animals == null" class="text-center">
       {{'NOTHING_FOUND' | translate}}
     </h1>
@@ -63,7 +61,7 @@
             <ion-item
               class="animal"
               *ngFor="let animal of searchResults | filter:filterBy"
-              [routerLink]="['/app/animals/details/', animal?.id]"
+              [routerLink]="['/animals/details/', animal?.id]"
             >
               <ion-avatar slot="start">
                 <img
@@ -86,14 +84,15 @@
     <div class="collection ion-padding" *ngIf="animals">
       <div
         class="animal collection-item"
-        *ngFor="let animal of animals | filter:filterBy"
+        *ngFor="let animal of animals | filter:filterBy" 
       >
         <ion-card
           class=""
-          [routerLink]="['/app/animals/details/', animal?.id]"
+          [routerLink]="['/animals/details/', animal?.id]"
           button="true"
         >
-          <ion-img [src]="animal?.image" [alt]="animal.name"></ion-img>
+          <img [src]="animal?.image" [alt]="animal.name" loading="lazy">
+         
           <ion-card-header>
             <ion-card-subtitle>{{animal.date | date}}</ion-card-subtitle>
             <ion-card-title>{{animal.name}}</ion-card-title>
@@ -101,13 +100,16 @@
           <ion-card-content>
             {{animal.description | shorten: 250: '...'}}
           </ion-card-content>
+          <!-- <ion-item>
+            <ion-button size="large" expand="full" fill="clear" slot="end">    <ion-icon slot="icon-only" name="heart"></ion-icon>
+            </ion-button>
+          </ion-item> -->
         </ion-card>
       </div>
     </div>
 
 
     <!-- <h1 style="text-align: center;" *ngIf="noMore">No more results</h1> -->
-  </ng-container>
   <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)" [disabled]="noMore">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"

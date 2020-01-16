@@ -44,14 +44,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/app/animals',
+        redirectTo: '/animals',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/app/animals',
+    redirectTo: '/animals',
     pathMatch: 'full'
   }
 ];

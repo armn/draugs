@@ -52,8 +52,13 @@
     "WEB": "Mājaslapas adrese",
     "BANK_ACCOUNT": "Bankas konts (ziedojumiem)",
     "ABOUT_ORGANIZATION": "Organizācijas apraksts / nosacījumi / darba laiks",
-    "ANIMAL_IS_ADOPTED": "Šis draugs jau ir atradis mājas!"
-
+    "ANIMAL_IS_ADOPTED": "Šis draugs jau ir atradis mājas!",
+    "UPDATE_AVAILABLE": "Pieejams atjauninājums",
+    "UPDATE_AVAILABLE_MESSAGE": "Ir pieejama jaunāka aplikācijas versija",
+    "CHECKING_FOR_UPDATES": "Pārbauda, vai ir pieejami atjauninājumi...",
+    "CHECK_FOR_UPDATE": "Atjaunināt aplikāciju",
+    "UPDATE_APP": "Atjaunināt",
+    "SHARE": "Dalīties"
 
   }
   

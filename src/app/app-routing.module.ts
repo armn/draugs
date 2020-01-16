@@ -18,6 +18,20 @@ const routes: Routes = [
     loadChildren: () => import('./forgot/forgot.module').then( m => m.ForgotPageModule)
   },
   {
+    path: 'animals',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./animals/animals.module').then(m => m.AnimalsPageModule)
+      },
+      {
+        path: 'details/:id',
+        loadChildren: () => import('./details/details.module').then(m => m.DetailsPageModule)
+      },
+    ]
+  },
+  {
     path: 'admin',
     canActivate: [AngularFireAuthGuard, RoleGuard],
     data: {

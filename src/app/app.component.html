@@ -15,10 +15,16 @@
         <ion-list>
           <ion-list-header>{{ "APP" | translate }}</ion-list-header>
           <ion-menu-toggle auto-hide="false">
-            <ion-item [routerLink]="['/app/animals']">
+            <ion-item [routerLink]="['/animals']">
               <ion-icon slot="start" name="paw"></ion-icon>
               <ion-label>
                 {{ "ANIMALS" | translate }}
+              </ion-label>
+            </ion-item>
+            <ion-item (click)="checkForUpdate()" button="true">
+              <ion-icon slot="start" name="refresh"></ion-icon>
+              <ion-label>
+                {{ "CHECK_FOR_UPDATE" | translate }}
               </ion-label>
             </ion-item>
             <!-- <ion-item [routerLink]="['/app/lost']">

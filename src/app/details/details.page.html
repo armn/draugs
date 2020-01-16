@@ -4,6 +4,11 @@
       <ion-back-button defaultHref="/app" [text]="'BACK' | translate"></ion-back-button>
     </ion-buttons>
     <ion-title>{{animal?.name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="shareAnimal()">
+        <ion-icon slot="icon-only" name="share"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

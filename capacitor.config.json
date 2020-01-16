@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "draugs",
+  "appId": "app.draugs",
+  "appName": "Draugs",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

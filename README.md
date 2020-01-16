@@ -1,5 +1,5 @@
-# draugs
-Draugs App — find animals from shelters.
+# Draugs
+Draugs App — find animals from local shelters
 
 Ionic/Angular/Firebase application.
 

@@ -1,8 +1,8 @@
 {
-  "name": "draugs",
+  "name": "Draugs",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Armands Leimanis",
+  "homepage": "https://draugs.app",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

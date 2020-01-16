@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "draugsapp"
+  },
+  "targets": {
+    "draugsapp": {
+      "hosting": {
+        "app": [
+          "draugsapp"
+        ],
+        "dev": [
+          "draugsapp-dev"
+        ]
+      }
+    }
   }
 }
