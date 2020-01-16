@@ -69,25 +69,28 @@ export class DetailsPage implements OnInit {
       .then(() => {} )
       .catch(async error => {
         // Probably on desktop
-        
-        const alert = await this.alertController.create({
-          header: this.translate.instant("SHARE"),
-          inputs: [
-            {
-              name: 'url',
-              value: window.location.href
-            }
-          ],
-          buttons: [
-            {
-              text: 'OK',
-              role: 'cancel',
-              handler: data => {
+        if (error && error != "AbortError: Share canceled") {
+          const shareAlert = await this.alertController.create({
+            header: this.translate.instant("SHARE"),
+            inputs: [
+              {
+                name: 'url',
+                value: window.location.href
               }
-            }]
-        });
-    
-        await alert.present();
+            ],
+            buttons: [
+              {
+                text: 'OK',
+                role: 'cancel',
+                handler: data => {
+                }
+              }]
+          });
+      
+          await shareAlert.present();
+
+        }
+        
 
       } );
   }

@@ -65,6 +65,8 @@ export class AppComponent implements OnInit {
         await alert.present();
       });
     }
+
+    
   }
 
   async initializeApp() {
