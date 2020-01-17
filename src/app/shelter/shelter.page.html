@@ -11,21 +11,23 @@
 
 <ion-content class="ion-padding">
   <div class="shelter">
-    <ion-row>
+    <ion-row *ngIf="shelter?.logo">
       <ion-col>
-        <ion-img [src]="shelter?.logo" [alt]="shelter?.name"></ion-img>
+        <img [src]="shelter?.logo" [alt]="shelter?.name" class="shelter-logo" />
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
         <h1>{{shelter?.name}}</h1>
+        <p class="pre-wrap">{{shelter?.about}}</p>
         <h2><a href="tel:{{shelter?.phone}}">{{shelter?.phone}}</a></h2>
         <h3><a href="mailto:{{shelter?.email}}">{{shelter?.email}}</a></h3>
+        <h3><a href="{{shelter?.web}}" target="_blank">{{shelter?.web}}</a></h3>
 
         <h4>{{shelter?.location}}</h4>
+        <div #map id="map"></div>
 
-        <p>{{shelter?.about}}</p>
 
       </ion-col>
 

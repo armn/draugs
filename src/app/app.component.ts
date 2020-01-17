@@ -10,6 +10,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { Router, NavigationStart } from "@angular/router";
 import { OverlaysService } from "./services/overlays.service";
 import { SwUpdate } from "@angular/service-worker";
+import { CapacitorGoogleAnalytics } from 'capacitor-google-analytics';
 
 const { SplashScreen } = Plugins;
 @Component({

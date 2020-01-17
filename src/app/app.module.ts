@@ -9,14 +9,14 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import {NgPipesModule} from 'ngx-pipes';
+import { NgPipesModule } from 'ngx-pipes';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeLv from '@angular/common/locales/lv';
@@ -38,16 +38,18 @@ registerLocaleData(localeLv, 'lv');
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireAuthGuardModule,
-    TranslateModule.forRoot({ loader: {
+  AngularFireAuthModule,
+  AngularFirestoreModule,
+  AngularFireStorageModule,
+  AngularFireAuthGuardModule,
+  TranslateModule.forRoot({
+    loader: {
       provide: TranslateLoader,
       useFactory: HttpLoaderFactory,
       deps: [HttpClient]
-  }}),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    }
+  }),
+  ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
@@ -57,4 +59,4 @@ registerLocaleData(localeLv, 'lv');
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

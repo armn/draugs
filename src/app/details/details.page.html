@@ -37,20 +37,20 @@
     <ion-row>
       <ion-col>
         <ion-list>
-          <ion-item>
+          <ion-item *ngIf="animal?.sex">
             <ion-label>{{ 'SEX' | translate}}</ion-label>
             <ion-note slot="end" color="primary">{{animal?.sex | translate}}</ion-note>
           </ion-item>
-          <ion-item>
+          <ion-item *ngIf="animal?.born">
             <ion-label>{{'AGE'|translate}}</ion-label>
             <ion-note slot="end" color="primary">{{animal?.born}}</ion-note>
           </ion-item>
-          <ion-item>
+          <ion-item *ngIf="animal?.breed">
             <ion-label>{{ 'BREED' | translate }}</ion-label>
             <ion-note slot="end" color="primary">{{animal?.breed}}</ion-note>
           </ion-item>
 
-          <ion-item>
+          <ion-item *ngIf="animal?.tag">
             <ion-label>{{ 'TAG' | translate}}</ion-label>
             <ion-note slot="end" color="primary">{{animal?.tag}}</ion-note>
           </ion-item>
